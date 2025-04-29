@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #ffffff;
+      padding: 2rem 2.5rem;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      max-width: 350px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      color: #6a1b9a;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.7rem;
+      margin: 0.6rem 0;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1rem;
+      background-color: #ab47bc;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #8e24aa;
+    }
+
+    #message {
+      margin-top: 1rem;
+      color: red;
+      font-size: 0.95rem;
+    }
+
+    .signup-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .signup-link a {
+      color: #6a1b9a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Page de Connexion</h2>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Mot de passe" required>
+      <button type="submit">Se connecter</button>
+    </form>
+    <p class="signup-link">
+      Vous n'avez pas de compte ?
+      <a href="formulaire.html">Créer un compte</a>
+    </p>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const validEmail = "test@example.com";
+    const validPassword = "123456";
+
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (email === validEmail && password === validPassword) {
+        sessionStorage.setItem("user_email", email);
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("message").textContent = "Identifiants incorrects.";
+      }
+    });
+  </script>
+</body>
+</html>
